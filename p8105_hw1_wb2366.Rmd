@@ -50,7 +50,7 @@ con_mean_vec_factor = mean(as.numeric(pull(example_df, vec_factor)))
 
 ## Problem2
 
-
+This chunk is used for loading penguins dataset
 ```{r load dataset}
 data("penguins", package = "palmerpenguins")
 ```
@@ -93,5 +93,13 @@ Year is a `r class(pull(penguins, year))` variable. The range for the years vari
 
 **Answer:** mean of flipper length = `r mean(penguins$flipper_length_mm, na.rm=TRUE)`
 
+
+**Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x)**
+
+```{r scatterplot}
+library(ggplot2)
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  geom_point() + labs(title = "Th")
+```
 
 
