@@ -1,13 +1,9 @@
 ---
 title: "p8105_hw1_wb2366"
 auther: Wenhan Bao
-Date: 2021-09-28
+Date: 2021-09-29
 output: github_document
 ---
-
-```{r library}
-library(tidyverse)
-```
 
 ## Problem1
 - Create a data frame comprised of:
@@ -16,7 +12,10 @@ library(tidyverse)
   - a character vector of length 10
   - a factor vector of length 10, with 3 different factor “levels”
 
+Create a data frame
+
 ```{r data frame}
+library(tidyverse)
 example_df = tibble(
   vec_df = rnorm(10),
   vec_logical = vec_df > 0,
@@ -26,6 +25,8 @@ example_df = tibble(
 ```
 
 **Try to take the mean of each variable in your dataframe. What works and what doesn't?**
+
+Try to take the mean of each variable
 
 ```{r mean_df}
 mean_vec_df = mean(pull(example_df, vec_df))
@@ -38,7 +39,9 @@ mean_vec_factor = mean(pull(example_df, vec_factor))
 
 **Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?**
 
-```{r convert variables}
+Take the mean of converted variables
+
+```{r convert variables, results='hide'}
 con_mean_vec_logical = mean(as.numeric(pull(example_df, vec_logical)))
 con_mean_vec_char = mean(as.numeric(pull(example_df, vec_char)))
 con_mean_vec_factor = mean(as.numeric(pull(example_df, vec_factor)))
@@ -47,10 +50,9 @@ con_mean_vec_factor = mean(as.numeric(pull(example_df, vec_factor)))
 **Answer:** After converting variables to numeric, the logical vector and factor vector could be taken the mean in that they could be converted to "0","1" or "1", "2", "3" by ranking. However, we still fail to take the mean of the character vector in that character vector couldn't be converted in to numeric which is still N/A.
 
 
-
 ## Problem2
 
-This chunk is used for loading penguins dataset
+Load penguins dataset
 ```{r load dataset}
 data("penguins", package = "palmerpenguins")
 ```
@@ -94,12 +96,14 @@ Year is a `r class(pull(penguins, year))` variable. The range for the years vari
 **Answer:** mean of flipper length = `r mean(penguins$flipper_length_mm, na.rm=TRUE)`
 
 
-**Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x)**
+Make a scatterplot of flipper length and bill length in penguins species
 
 ```{r scatterplot}
 library(ggplot2)
 ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  geom_point() + labs(title = "Th")
+  geom_point() + labs(title = "The scatterplot of flipper length and bill length in penguins species", x = "bill length (mm)", y = "flipper length (mm)")
+
+ggsave("The scatterplot of flipper length and bill length in penguins species.pdf")
 ```
 
 
