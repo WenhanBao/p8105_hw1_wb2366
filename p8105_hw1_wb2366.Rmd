@@ -25,5 +25,16 @@ example_df = tibble(
 )
 ```
 
-  
+**Try to take the mean of each variable in your dataframe. What works and what doesn't?**
+
+```{r mean_df}
+mean_vec_df = mean(pull(example_df, vec_df))
+mean_vec_logical = mean(pull(example_df, vec_logical))
+mean_vec_char = mean(pull(example_df, vec_char))
+mean_vec_factor = mean(pull(example_df, vec_factor))
+```
+
+Answer: According to the result, the number and logical vector could be taken the mean while the character and factor vector couldn't be taken the mean
+
+
 
