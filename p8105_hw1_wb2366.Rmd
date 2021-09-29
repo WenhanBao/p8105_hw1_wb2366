@@ -100,8 +100,12 @@ Make a scatterplot of flipper length and bill length in penguins species
 
 ```{r scatterplot}
 library(ggplot2)
+
 ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  geom_point() + labs(title = "The scatterplot of flipper length and bill length in penguins species", x = "bill length (mm)", y = "flipper length (mm)")
+  geom_point() + 
+  labs(title = "The scatterplot of flipper length and bill length in penguins species", 
+       x = "bill length (mm)", 
+       y = "flipper length (mm)")
 
 ggsave("The scatterplot of flipper length and bill length in penguins species.pdf")
 ```
